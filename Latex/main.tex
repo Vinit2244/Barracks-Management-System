@@ -3,26 +3,59 @@
 \usepackage[margin=2cm]{geometry}
 \usepackage{parskip}
 
-\begin{document}
-
-\title{
-    {HW1 : Team 16}\\
-    {\large International Institute of Information Technology, Hyderabad}\\
-    \author{Maitreya Chitale, Ketaki Shetye, Vinit Mehta, Prabhav Shetty, Sujal Deoda}
-    \vspace{1cm}
-    \includegraphics[width=3cm]{IIITH.png}
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\LARGE\textbf{\@title}}\par
+    \vspace{1em}
+    \large
+    \lineskip 1em
+    \begin{tabular}[t]{c}
+      \textbf{\large Maitreya Chitale, Ketaki Shetye, Vinit Mehta, Prabhav Shetty, Sujal Deoda} \\
+      \textit{Department of Computer Science, IIITH} \\
+    \end{tabular}\par
+  \end{center}
 }
-\date{}
+\makeatother
+
+\title{Sanji's Culinary Haven \\ A "One Piece" Inspired Mini World}
+
+\begin{document}
 
 \maketitle
 
+\begin{center}
+    \includegraphics[width=3cm]{IIITH.png} 
+\end{center}
+
 \section{Introduction to the mini-world}
+Step into "Sanji's Culinary Haven," a mini world that celebrates the culinary genius of Sanji from "One Piece." Explore a meticulously crafted database that captures the essence of his restaurant on an enchanting island. Experience the adventure, camaraderie, and unforgettable flavors of the "One Piece" universe through exquisite dishes, loyal customers, and dedicated staff. Delve into a tapestry of flavors and embark on an epicurean journey that blends fine dining with the spirit of "One Piece." Bon appétit!
 
 \section{Purpose of the database}
+\begin{enumerate}
+    \item \underline{\textbf{Data Retrieval:}} It would allow the user to retrieve particular data of interest from very large collection of data, all of which is not needed for a particular task.
+    \item \underline{\textbf{Data Integrity:}} Ensures that data is accurate, consistent, and reliable.
+    \item \underline{\textbf{Data Security:}} Databases offer security features to protect sensitive information. Access control mechanisms ensure that only authorized users can view or modify data, and encryption can be used to protect data at rest and in transit.
+    \item \underline{\textbf{Data Analysis:}} User can use the all the data stored to study patterns to derive insights, generate reports and make decisions for the future of the restaurant.
+    \item \underline{\textbf{Data Maintenance:}} The user can easily update, insert or delete data from the database without much hassle to manage integrity and consistency (database software takes care of it).
+    \item \underline{\textbf{Application Integration:}} Databases are often integrated with various software applications, allowing these applications to store and retrieve data seamlessly.
+\end{enumerate}
 
 \section{Users of the database}
+The users of the "Sanji's Culinary Haven" database can be:
+
+1. \underline{\textbf{Sanji (Restaurant Owner and Chef):}} Sanji himself would use the database to manage the restaurant's menu, track customer preferences, monitor orders, and oversee the performance of his staff. He could use it to refine his culinary offerings and enhance the restaurant's overall experience.
+
+2. \underline{\textbf{Restaurant Staff:}} The waitstaff and kitchen staff would use the database to fulfill customer orders, update the menu as needed, and coordinate their roles within the restaurant.
+
+3. \underline{\textbf{Customers:}} Frequent patrons or visitors to Sanji's restaurant could use the database to view the menu, place orders, and provide feedback or reviews on their dining experiences.
+
+4. \underline{\textbf{Restaurant Managers:}} If there are managers or supervisors overseeing the restaurant's operations, they could use the database to monitor staff performance, track sales, and make managerial decisions. They can also use this data to check what all raw materials vegetables and spices would be required and place order accordingly. They can also keep track of staff's rating and based on the rating can increment or decrement some staff persons salary or recruit/fire staff.
+
+5. \underline{\textbf{Potential Investors or Partners:}} If Sanji's restaurant were seeking investments or partnerships, potential stakeholders might use the database to assess the restaurant's performance and prospects.
 
 \section{Applications of the database}
+This database stores all the information about the restaurant related to its staff, reviews, orders, bills, feedbacks, grocery, salary etc. which all can be used to run the restaurant efficiently and ensure good service to the customers. Some software can extract out the reviews information from the database and show the overall rating of the restaurant to the customers so that they can take their decision based on this. The managers and head chefs can take a peek on the storage of vegetables, spices and all and decide when do they want to place some order. The manager can decide whether give some increment/decrement or recruit/fire some staff (based on their customer feedback). The information about the revenue being generated can be inferred.
 
 \section{Database Requirements}
     \subsection{Assumptions}
@@ -37,8 +70,5 @@
 \section{Functional Requirements}
 
 \section{Summary}
-
-
-
 
 \end{document}
