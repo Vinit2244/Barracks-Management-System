@@ -3,29 +3,21 @@ This repository is for all the members of team number 16 to collaborate on Cours
 
 ## To-Do
 ### HW1
-- [ ] Watch all episodes of series One-piece and take important notes
-  - [ ] Ep1
-  - [ ] Ep2
-  - [ ] Ep3
-  - [ ] Ep4
-  - [ ] Ep5
-  - [ ] Ep6
-  - [ ] Ep7
-  - [ ] Ep8
-
 Writing tasks
-- [ ] 1. Introduction to the mini-world 
-- [ ] 2. Purpose of the database
-- [ ] 3. Users of the database
-- [ ] 4. Applications of the database 
-- [ ] 5. Database Requirements
-  - [ ] a. Assumptions
-  - [ ] b. Strong Entity types
-  - [ ] c. Weak entity types
-  - [ ] d. Relationship types
-    - [ ] i. Degree
-    - [ ] ii. Participating entity types
-    - [ ] iii. Cardinality ratio/ Participation constraint/ (min, max) constraint
-  - [ ] e. Degree > 2 relationship types
-- [ ] 6. Functional Requirements
-- [ ] 7. Summary
+- [x] 1. Introduction to the mini-world 
+- [x] 2. Purpose of the database
+- [x] 3. Users of the database
+- [x] 4. Applications of the database 
+- [x] 5. Database Requirements
+  - [x] a. Assumptions
+  - [x] b. Strong Entity types
+  - [x] c. Weak entity types
+  - [x] d. Relationship types
+    - [x] i. Degree
+    - [x] ii. Participating entity types
+    - [x] iii. Cardinality ratio/ Participation constraint/ (min, max) constraint
+  - [x] e. Degree > 2 relationship types
+- [x] 6. Functional Requirements
+- [x] 7. Summary
+
+### Project Phase I

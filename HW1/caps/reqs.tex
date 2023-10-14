@@ -1,0 +1,453 @@
+\section{Database Requirements} \label{cap:reqs}
+
+\subsection{Assumptions}
+    \begin{enumerate}
+        \item Purchase order is placed for one Ingredient at a time with vendor (that is bill for purchase of each Ingredient from vendor (maybe same) are separate).
+        \item All the attributes are NOT NULL unless specified specifically.
+        \item Assuming that each customer places just one order. If the same customer places another order than it is treated as a separate customer.
+        \item Each customer can take up/reserve only one table and not multiple tables.
+    \end{enumerate}
+
+\subsection{Strong Entity Types}
+Note: Attributes in red color serves as primary key for that entity type. \\
+\textcolor{red}{Red Colored attributes : Primary Key} \\
+\textcolor{darkgreen}{Green Colored attributes : Foreign Key}
+    \begin{enumerate}
+        \item Employee \\
+        \textit{Stores the \underline{details of all the employees} (cooks, waiters, cleaning staff and managers) working in the restaurant.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Employee Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Name (Composite Attribute : First Name + Middle Name + Last Name)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+                \item Age (Derivable)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                        \item \textcolor{gray}{Must be >= 18}
+                        \item \textcolor{gray}{Age = Curr Date - DOB}
+                    \end{itemize}
+                \item DOB
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date}
+                    \end{itemize}
+                \item Gender
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+                \item Address (Complex) (Composite Attribute : Apt no + Street no + area + city + state)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+                \item Contact No
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                        \item \textcolor{gray}{10 digits}
+                    \end{itemize}
+                \item Role
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+                \item Start Date
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date}
+                    \end{itemize}
+                \item End Date
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date}
+                        \item \textcolor{gray}{NULLABLE}
+                    \end{itemize}
+                \item Salary
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                        \item \textcolor{gray}{Currency : Beli}
+                    \end{itemize}
+            \end{enumerate}
+        
+        \item Customer \\
+        \textit{Stores the \underline{details of all the customers} that visit the restaurant.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Customer Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Name (Composite Attribute : First Name + Middle Name + Last Name)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+                \item Contact No
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                        \item \textcolor{gray}{10 digits}
+                    \end{itemize}
+                \item Favourite Dishes (Multivalued)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String of comma separated values)}
+                    \end{itemize}
+            \end{enumerate}
+
+        \item Vendor \\
+        \textit{Stores the \underline{details of all the vendors} from which the restaurant purchases the ingredients.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Vendor Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Name (Composite Attribute : First Name + Middle Name + Last Name)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+                \item Contact No
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                        \item \textcolor{gray}{10 digits}
+                    \end{itemize}
+                \item Address (Complex) (Composite Attribute : Apt no + Street no + area + city + state)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+            \end{enumerate}
+        
+        \item Order \\
+        \textit{Stores information about \underline{individual orders.}}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Order Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Date and time
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date-Time}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Customer Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Dishes (Multivalued)
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String of comma separated valued)}
+                    \end{itemize}
+                \item Table No
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+            \end{enumerate}
+        
+        \item Dishes \\
+        \textit{Stores information about the \underline{dishes being served}, ingredients required in the dishes, cuisine of the dishes and the cook which prepares the dish.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Dish Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Name
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Ingredient Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Employee Id (Id of cook)}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Cuisine
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+                \item Price
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Decimal}
+                        \item \textcolor{gray}{Upto 2 decimal places}
+                        \item \textcolor{gray}{Currency : Beli}
+                    \end{itemize}
+                \item Discount
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Decimal}
+                        \item \textcolor{gray}{Upto 2 decimal places}
+                        \item \textcolor{gray}{Unit : \%}
+                    \end{itemize}
+            \end{enumerate}
+
+        \item Inventory \\
+        \textit{Stores information about \underline{availability of ingredients} and in what quantities.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Ingredient Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Name
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Vendor Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Quantity
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                        \item \textcolor{gray}{Unit : Kg/pcs (based on item)}
+                    \end{itemize}
+                \item Price
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Decimal}
+                        \item \textcolor{gray}{Upto 2 places precision}
+                        \item \textcolor{gray}{Currency : Beli}
+                    \end{itemize}
+            \end{enumerate}
+        
+        \item Bills \\
+        \textit{Stores information about \underline{bills of all orders} placed by customers.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Bill Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Order Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Customer Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Total Amount
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Decimal}
+                        \item \textcolor{gray}{Upto 2 places of precision}
+                    \end{itemize}
+                \item Date and time
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date-Time}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Table No}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Mode Of Payment
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+            \end{enumerate}
+        
+        \item Tables \\
+        \textit{Stores Information about \underline{tables}.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Table No}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Capacity
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Used
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+                \item Reserved
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+            \end{enumerate}
+        
+        \item Restock Orders \\
+        \textit{Stores information about the \underline{orders placed with vendors} for the purchase of ingredients.}
+            \begin{enumerate}[label=\alph*.]
+                \item\textcolor{red}{Restock Order Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Ingredient Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Vendor Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Quantity
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Total Cost
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Decimal}
+                        \item \textcolor{gray}{With 2 digits of precison}
+                        \item \textcolor{gray}{Currency : Beli}
+                    \end{itemize}
+                \item Paid
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+            \end{enumerate}
+    \end{enumerate}
+
+\subsection{Weak Entity Types}
+    \begin{enumerate}
+        \item Feedback \\
+        \textit{Stores Information about the \underline{feedbacks given by customers} for their orders.}
+            \begin{enumerate}[label=\alph*.]
+                \item \textcolor{darkgreen}{Customer Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Rating
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : ENUM}
+                    \end{itemize}
+                \item Date
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Order Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item Review
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Varchar(String)}
+                    \end{itemize}
+            \end{enumerate}
+        
+        \item Reservations \\
+        \textit{Stores information about the \underline{tables reserved by customers}.}
+            \begin{enumerate}[label=\alph*.]
+                \item \textcolor{darkgreen}{Customer Id}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item \textcolor{darkgreen}{Table No}
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Integer}
+                    \end{itemize}
+                \item From
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date-Time}
+                    \end{itemize}
+                \item Till
+                    \begin{itemize}[label=-]
+                        \item \textcolor{gray}{Data Type : Date-Time}
+                        \item \textcolor{gray}{NULLABLE}
+                    \end{itemize}
+            \end{enumerate}
+    \end{enumerate}
+
+\subsection{Relationship Types}
+    \subsubsection{Binary Relationships}
+        \begin{itemize}
+            \item Waiter \textbf{SERVES} the Order
+                \begin{itemize}[label=-]
+                    \item Participating entities : Waiter (Employee), Order
+                    \item Cardinality Ratio : 1:N
+                \end{itemize}
+
+            \item Chef \textbf{PREPARES} the Order
+                \begin{itemize}[label=-]
+                    \item Participating entities : Chef (Employee), Order
+                    \item Cardinality Ratio : N:M
+                \end{itemize}
+
+            \item Vendor \textbf{SELLS} Ingredients
+                \begin{itemize}[label=-]
+                    \item Participating entities : Vendor, Ingredient
+                    \item Cardinality Ratio : 1:N
+                \end{itemize}
+
+            % \item Customer \textbf{PAYS} Bill
+            %     \begin{itemize}[label=-]
+            %         \item Participating entities : Customer, Bill
+            %         \item Cardinality Ratio : 1:1
+            %     \end{itemize}
+
+            \item Manager \textbf{MANAGES} Inventory
+                \begin{itemize}[label=-]
+                    \item Participating entities : Manager, Inventory
+                    \item Cardinality Ratio : 1:1
+                \end{itemize}
+
+            \item Manager \textbf{OVERSEES} Employees
+                \begin{itemize}[label=-]
+                    \item Participating entities : Manager, Employee
+                    \item Cardinality Ratio : 1:N
+                \end{itemize}
+
+            % \item Customer \textbf{RATES} Order
+            %     \begin{itemize}[label=-]
+            %         \item Participating entities : Customer, Order
+            %         \item Cardinality Ratio : 1:1
+            %     \end{itemize}
+
+            \item Cook \textbf{REPORTS} to Manager
+                \begin{itemize}[label=-]
+                    \item Participating entities : Cook, Manager
+                    \item Cardinality Ratio : N:1
+                \end{itemize}
+
+            \item Waiter \textbf{REPORTS} to Manager
+                \begin{itemize}[label=-]
+                    \item Participating entities : Waiter, Manager
+                    \item Cardinality Ratio : N:1
+                \end{itemize}
+
+            \item Cleaning Staff \textbf{REPORTS} to Manager
+                \begin{itemize}[label=-]
+                    \item Participating entities : Cleaning Staff, Manager
+                    \item Cardinality Ratio : N:1
+                \end{itemize}
+
+            % \item Manager \textbf{PLACES} Restock Order
+            %     \begin{itemize}[label=-]
+            %         \item Participating entities : Manager, Restock Order
+            %         \item Cardinality Ratio : 1:N
+            %     \end{itemize}
+
+                \item Customer \textbf{RESERVES} Table
+                \begin{itemize}[label=-]
+                    \item Participating entities : Customer, Table
+                    \item Cardinality Ratio : 1:1
+                \end{itemize}
+
+            \item Customer \textbf{SITS} on a Table
+                \begin{itemize}[label=-]
+                    \item Participating entities : Customer, Table
+                    \item Cardinality Ratio : 1:1
+                \end{itemize}
+
+            % \item Customer \textbf{ORDERS} an Order
+            %     \begin{itemize}[label=-]
+            %         \item Participating entities : Customer, Order
+            %         \item Cardinality Ratio : 1:1
+            %     \end{itemize}
+
+            \item Dish \textbf{REQUIRES} Ingredient
+                \begin{itemize}[label=-]
+                    \item Participating entities : Dish, Ingredient
+                    \item Cardinality Ratio : N:M
+                \end{itemize}
+
+            \item Customer \textbf{RATES} Order
+                \begin{itemize}[label=-]
+                    \item Participating entities : Customer, Order
+                    \item Cardinality Ratio : 1:1
+                \end{itemize}
+        \end{itemize}
+    \subsubsection{Degree $>$ 2 relationship types}
+        \begin{itemize}
+            \item Customer \textbf{PAYS} Bill for an Order and \textbf{GIVES} Feedback
+                \begin{itemize}[label=-]
+                    \item Participating entities : Customer, Bill, Order, Feedback
+                    \item Cardinality Ratio : 1:1:1:1
+                \end{itemize}
+
+            \item Manager \textbf{PLACES} Restock Order with Vendor
+                \begin{itemize}[label=-]
+                    \item Participating entities : Manager, Restock Order, Vendor
+                    \item Cardinality Ratio : 1:M:N
+                \end{itemize}
+        \end{itemize}

@@ -1,0 +1,72 @@
+\usepackage{times}
+% \usepackage[portugue]{babel}
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=2cm]{geometry}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{graphicx}
+\usepackage{algorithmic}
+\usepackage{float}
+\usepackage{amsfonts,amsthm, amssymb, amsmath}
+\usepackage{cancel}
+\usepackage{multirow, array}
+\usepackage{indentfirst}
+\usepackage{subcaption}
+\usepackage{pdflscape}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage[autostyle]{csquotes}
+\usepackage[backend=biber, style=nature, sorting=ynt]{biblatex}
+\usepackage[nottoc]{tocbibind}
+\usepackage{parskip}
+\usepackage{tocloft}
+\addbibresource{references.bib}
+\addto\captionsportuguese{\renewcommand*\contentsname{\hfill Tabela de Conteúdos \hfill}}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\setlength{\parindent}{0.35cm}
+\setlength{\parskip}{3pt}
+
+\newcommand{\institutionname}[1]{
+    \newcommand{\institution}{#1}
+}
+
+\newcommand{\coursename}[1]{
+    \newcommand{\course}{#1}
+}
+
+\newcommand{\printcover}{
+    \begin{titlepage}
+        \newgeometry{left=1cm, top=3cm, bottom=2cm, right=1cm}
+        \pagestyle{empty}
+        \vspace*{3cm}
+        \begin{center}
+            \begin{figure}
+            \centering
+            \includegraphics[width=0.4\textwidth]{imgs/logo.png}
+            \end{figure}
+        \end{center}
+        
+        \begin{center}
+            \large
+            \@date \\
+            \vspace{0.5cm}
+            \LARGE
+            \MakeUppercase{\textbf{\@title}} \\
+            \vspace{1cm}
+            \Large
+            \textcolor{black}{\MakeUppercase{\course}}
+        \end{center}
+        \vfill
+        \begin{center}
+            \large
+            \@author
+        \end{center}
+        \vspace{2cm}
+        \normalsize
+        \restoregeometry
+    \end{titlepage}
+}
+
+
